@@ -3,6 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { SharedModule } from './common/shared.module';
 import { UsersModule } from './users/users.module';
 import { AuthsModule } from './auths/auths.module';
+import { CoursesModule } from './courses/courses.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -22,6 +23,7 @@ dotenv.config();
     }),
     UsersModule,
     AuthsModule,
+    CoursesModule,
   ],
   controllers: [],
   providers: [],
