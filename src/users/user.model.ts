@@ -1,4 +1,5 @@
-import { BeforeCreate, Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Course } from "src/courses/course.model";
 
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
@@ -87,6 +88,9 @@ export class User extends Model<User> {
     })
     profile_photo: string;
 
+
+    @HasMany(() => Course)
+    courses: Course[]
     
 
 }
