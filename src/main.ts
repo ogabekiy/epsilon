@@ -11,6 +11,8 @@ async function bootstrap() {
 
   app.useStaticAssets(path.join(__dirname, '..', 'profile_photos'), { prefix: '/profile_photos' });
 
+  app.useStaticAssets(path.join(__dirname, '..', 'categories_images'), { prefix: '/categories_images' });
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

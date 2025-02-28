@@ -4,6 +4,7 @@ import { SharedModule } from './common/shared.module';
 import { UsersModule } from './users/users.module';
 import { AuthsModule } from './auths/auths.module';
 import { CoursesModule } from './courses/courses.module';
+import { CategoriesModule } from './categories/categories.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -24,6 +25,7 @@ dotenv.config();
     UsersModule,
     AuthsModule,
     CoursesModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [],
