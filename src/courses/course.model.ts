@@ -1,5 +1,6 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { Category } from "src/categories/category.model";
+import { Room } from "src/rooms/room.model";
 import { User } from "src/users/user.model";
 
 @Table({tableName: 'courses'})
@@ -59,6 +60,8 @@ export class Course extends Model<Course>{
     })
     status: string
 
+
+    @ForeignKey(() => Room)
     @Column({
         type: DataType.INTEGER,
         allowNull: false
@@ -86,13 +89,12 @@ export class Course extends Model<Course>{
     })
     days: string
 
-
     @BelongsTo(() => User)
     teacher: User
-
 
     @BelongsTo(() => Category)
     category: Category
 
-
+    @BelongsTo(() => Room)
+    room: Room
 }

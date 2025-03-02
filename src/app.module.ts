@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthsModule } from './auths/auths.module';
 import { CoursesModule } from './courses/courses.module';
 import { CategoriesModule } from './categories/categories.module';
+import { RoomsModule } from './rooms/rooms.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -26,6 +27,7 @@ dotenv.config();
     AuthsModule,
     CoursesModule,
     CategoriesModule,
+    RoomsModule,
   ],
   controllers: [],
   providers: [],
