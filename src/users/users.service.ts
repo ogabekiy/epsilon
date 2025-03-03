@@ -4,6 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './user.model';
 import * as bcrypt from 'bcryptjs'
+import { Course } from 'src/courses/course.model';
 
 @Injectable()
 export class UsersService {
@@ -41,7 +42,11 @@ export class UsersService {
   }
 
   async findAll() {
-    return await this.UserModel.findAll();
+    return await this.UserModel.findAll({include: [{model: Course,as: 'studentCourses'},{model: Course, as: 'teacherCourses'}]});
+  }
+
+  async findAllUsers(){
+      return await this.UserModel.findAll({where: {role: 'user'},include: [{model: Course,as: 'studentCourses'}]})
   }
 
   async findByPhone(number:number){

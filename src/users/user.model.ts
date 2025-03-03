@@ -1,11 +1,12 @@
-import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { Course } from "src/courses/course.model";
+import { Enrollment } from "src/enrollments/enrollment.model";
 
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
 
     @Column({
-        type: DataType.NUMBER,
+        type: DataType.INTEGER,
         allowNull: false,
         unique: true
     })
@@ -38,7 +39,7 @@ export class User extends Model<User> {
         type: DataType.STRING,
         allowNull: true,
         validate: {
-            isNumeric: true,
+            is: /^[0-9]+$/,
             len: [9, 9]
         }
     })
@@ -70,7 +71,7 @@ export class User extends Model<User> {
     @Column({
         type: DataType.DATE,
         allowNull: true
-    })
+    })      
     birthday: Date;
 
     @Column({
@@ -89,8 +90,14 @@ export class User extends Model<User> {
     profile_photo: string;
 
 
-    @HasMany(() => Course)
-    courses: Course[]
+    @HasMany(() => Course, {foreignKey: 'teacher_id', as: 'teacherCourses'})
+    teacherCourses: Course[]
     
-
+    @BelongsToMany(() => Course, {
+      through: () => Enrollment,
+      foreignKey: 'user_id',
+      otherKey: 'course_id',
+      as: 'studentCourses'
+    }) 
+    studentCourses: Course[];
 }

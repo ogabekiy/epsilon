@@ -51,7 +51,7 @@ export class CreateUserDto {
     @IsDate()
     @IsOptional()
     @Type(() => Date) 
-    birthday?: Date;
+    birthday?: Date; 
 
     @IsString()
     @IsNotEmpty()

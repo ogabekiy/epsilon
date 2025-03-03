@@ -1,5 +1,6 @@
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { Category } from "src/categories/category.model";
+import { Enrollment } from "src/enrollments/enrollment.model";
 import { Room } from "src/rooms/room.model";
 import { User } from "src/users/user.model";
 
@@ -89,7 +90,7 @@ export class Course extends Model<Course>{
     })
     days: string
 
-    @BelongsTo(() => User)
+    @BelongsTo(() => User, {foreignKey: 'teacher_id', as: 'teacher'})
     teacher: User
 
     @BelongsTo(() => Category)
@@ -97,4 +98,12 @@ export class Course extends Model<Course>{
 
     @BelongsTo(() => Room)
     room: Room
+
+     @BelongsToMany(() => User, {
+      through: () => Enrollment,
+      foreignKey: 'course_id',
+      otherKey: 'user_id',
+      as: 'students'
+    })
+    students: User[];
 }
