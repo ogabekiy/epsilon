@@ -7,6 +7,7 @@ import { CoursesModule } from './courses/courses.module';
 import { CategoriesModule } from './categories/categories.module';
 import { RoomsModule } from './rooms/rooms.module';
 import { EnrollmentsModule } from './enrollments/enrollments.module';
+import { LessonsModule } from './lessons/lessons.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -30,6 +31,7 @@ dotenv.config();
     CategoriesModule,
     RoomsModule,
     EnrollmentsModule,
+    LessonsModule,
   ],
   controllers: [],
   providers: [],

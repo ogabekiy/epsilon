@@ -85,4 +85,11 @@ export class UsersService {
 
     return await this.UserModel.destroy({where:{id}});
   }
+
+  async setStatusFalse(id:number){
+    const dataUser = await this.findOne(id)
+    dataUser.active = false
+    dataUser.save()
+    return `now ${dataUser.first_name} is not active`
+  }
 }

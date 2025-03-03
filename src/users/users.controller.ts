@@ -95,4 +95,9 @@ export class UsersController {
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }
+
+  @Patch('/makeUnactive/:id')
+  makeUnActive(@Param('id') id:string){
+    return this.usersService.setStatusFalse(+id)
+  }
 }
