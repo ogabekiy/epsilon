@@ -1,6 +1,7 @@
-import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { Category } from "src/categories/category.model";
 import { Enrollment } from "src/enrollments/enrollment.model";
+import { Lesson } from "src/lessons/lesson.model";
 import { Room } from "src/rooms/room.model";
 import { User } from "src/users/user.model";
 
@@ -106,4 +107,7 @@ export class Course extends Model<Course>{
       as: 'students'
     })
     students: User[];
+
+    @HasMany(() => Lesson)
+    lessons: Lesson[]
 }
