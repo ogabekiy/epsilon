@@ -1,6 +1,7 @@
 import { BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { Course } from "src/courses/course.model";
 import { Enrollment } from "src/enrollments/enrollment.model";
+import { LessonAttendace } from "src/lesson_attendances/lesson_attendance.model";
 
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
@@ -100,4 +101,8 @@ export class User extends Model<User> {
       as: 'studentCourses'
     }) 
     studentCourses: Course[];
+
+
+    @HasMany(() => LessonAttendace)
+    lesson_attendances: LessonAttendace[]
 }

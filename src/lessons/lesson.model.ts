@@ -1,5 +1,6 @@
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { Course } from "src/courses/course.model";
+import { LessonAttendace } from "src/lesson_attendances/lesson_attendance.model";
 
 @Table({tableName: 'lessons'})
 export class Lesson extends Model<Lesson>{
@@ -21,4 +22,7 @@ export class Lesson extends Model<Lesson>{
 
     @BelongsTo(() => Course)
     course: Course
+
+    @HasMany(() => LessonAttendace)
+    lesson_attendances: LessonAttendace[]
 }
